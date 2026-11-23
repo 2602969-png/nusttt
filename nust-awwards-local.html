@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NUST | National University of Sciences and Technology</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050d1f;--ink:#f1ede4;--mute:#8e9ab5;--line:#1c2a4a;--gold:#d8b445;--navy:#0a2a5e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3efe6;--ink:#0a1a3a;--mute:#5b6784;--line:#d7d1c1;--gold:#a8820f}}
+:root[data-theme="light"]{--bg:#f3efe6;--ink:#0a1a3a;--mute:#5b6784;--line:#d7d1c1;--gold:#a8820f}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 "Bricolage Grotesque",system-ui,Arial,sans-serif;overflow-x:hidden}
+body.lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}
+/* preloader */
+#pre{position:fixed;inset:0;background:var(--navy);color:#f1ede4;z-index:100;display:flex;align-items:flex-end;justify-content:space-between;padding:32px;transition:transform 1.1s cubic-bezier(.76,0,.24,1)}
+#pre b{font:800 clamp(80px,22vw,300px)/.8 "Bricolage Grotesque";letter-spacing:-.05em}
+#pre span{font-size:14px;max-width:18ch;color:#b6c2dd}
+body.ready #pre{transform:translateY(-101%)}
+/* nav */
+.nav{position:fixed;left:0;right:0;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:calc(20px + env(safe-area-inset-top,0px)) 28px 20px;mix-blend-mode:difference;color:#fff}
+.nav a,.nav button{font:600 15px "Bricolage Grotesque";color:#fff;background:none;border:0;cursor:pointer;padding:6px 0}
+.logo{font-weight:800!important;font-size:22px!important;letter-spacing:-.03em}
+.menu{position:fixed;inset:0;background:var(--navy);color:#f1ede4;z-index:40;clip-path:inset(0 0 100% 0);transition:clip-path .9s cubic-bezier(.76,0,.24,1);display:flex;flex-direction:column;justify-content:center;padding:0 28px}
+.menu.open{clip-path:inset(0)}
+.menu a{font:800 clamp(44px,9vw,120px)/1 "Bricolage Grotesque";letter-spacing:-.04em;display:block;overflow:hidden}
+.menu a span{display:block;transform:translateY(110%);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.menu.open a span{transform:none}
+.menu a:hover{color:var(--gold)}
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 28px 28px;position:relative}
+.hero h1{font:800 clamp(110px,31vw,520px)/.78 "Bricolage Grotesque";letter-spacing:-.06em;margin:0;display:flex;overflow:hidden;padding-top:.05em}
+.hero h1 i{font-style:normal;display:block;transform:translateY(105%);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+body.ready .hero h1 i{transform:none}
+.hero .meta{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap}
+.hero .meta p{max-width:34ch;margin:0;color:var(--mute);font-size:18px}
+.hero .meta .serif{font-size:clamp(28px,4vw,52px);line-height:1;color:var(--gold);max-width:12ch}
+.fade{opacity:0;transform:translateY(20px);transition:opacity 1s .9s,transform 1s .9s}
+body.ready .fade{opacity:1;transform:none}
+/* photos */
+.photo{position:relative;overflow:hidden;cursor:pointer;background:linear-gradient(150deg,hsl(var(--h,220) 60% 38%),hsl(var(--h,220) 70% 14%));background-size:cover;background-position:center}
+.photo small{position:absolute;left:14px;bottom:12px;background:rgba(5,13,31,.75);color:#fff;padding:4px 9px;font-size:12px}
+.photo.has small{display:none}
+.reveal{height:78vh;margin:0 28px;--i:18%;clip-path:inset(0 var(--i) 0 var(--i))}
+.reveal .photo{height:100%;transform:scale(var(--s,1.15))}
+/* marquee */
+.mq{overflow:hidden;border-block:1px solid var(--line);padding:22px 0;margin-top:90px}
+.mq div{display:flex;width:max-content;animation:mq 28s linear infinite}
+.mq span{font:800 clamp(40px,7vw,96px)/1 "Bricolage Grotesque";letter-spacing:-.04em;padding-right:.5em;white-space:nowrap}
+.mq span em{color:var(--gold);font-style:normal;padding-left:.5em}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* statement */
+.state{padding:150px 28px;max-width:1400px;margin:0 auto}
+.state p{font:600 clamp(30px,5.2vw,76px)/1.08 "Bricolage Grotesque";letter-spacing:-.035em;margin:0}
+.state .w{opacity:.14;transition:opacity .3s}.state .w.on{opacity:1}
+/* schools */
+.sch{padding:40px 28px 140px}
+.sch h2,.hs h2,.cta h2{font:800 clamp(44px,8vw,120px)/.9 "Bricolage Grotesque";letter-spacing:-.05em;margin:0 0 50px}
+.row{display:grid;grid-template-columns:140px 1fr auto;gap:20px;align-items:baseline;padding:26px 0;border-top:1px solid var(--line);transition:padding .5s cubic-bezier(.2,.8,.2,1),color .3s}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row b{font:600 14px "Bricolage Grotesque";color:var(--gold)}
+.row h3{margin:0;font:600 clamp(24px,3.6vw,48px)/1.05 "Bricolage Grotesque";letter-spacing:-.03em}
+.row span{color:var(--mute);font-size:15px}
+.row:hover{padding-left:28px;padding-right:28px}
+.row:hover h3{color:var(--gold)}
+#pv{position:fixed;left:0;top:0;width:300px;height:380px;z-index:30;pointer-events:none;opacity:0;transform:scale(.7);transition:opacity .3s,scale .3s;background:linear-gradient(150deg,hsl(var(--h,220) 60% 42%),hsl(var(--h,220) 70% 14%));display:flex;align-items:flex-end;padding:14px;color:#fff;font:800 56px/1 "Bricolage Grotesque";letter-spacing:-.04em}
+#pv.on{opacity:1}
+/* horizontal */
+.hs{height:340vh;position:relative}
+.hs .stick{position:sticky;top:0;height:100svh;overflow:hidden;padding:110px 0 40px;display:flex;flex-direction:column}
+.hs h2{padding:0 28px;margin-bottom:30px}
+.track{display:flex;gap:24px;padding:0 28px;flex:1;min-height:0;will-change:transform}
+.track .photo{flex:0 0 min(70vw,560px);height:100%}
+.track .photo strong{position:absolute;left:18px;top:14px;font:600 clamp(22px,3vw,36px) "Instrument Serif";font-style:italic;color:#fff}
+/* cta */
+.cta{padding:140px 28px 70px;text-align:center}
+.cta h2{margin-bottom:60px}
+.big{display:inline-grid;place-items:center;width:220px;height:220px;border-radius:50%;background:var(--gold);color:#07132b;font:800 22px "Bricolage Grotesque";letter-spacing:-.02em;transition:transform .3s}
+footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:28px;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+#cur{position:fixed;left:0;top:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:#fff;mix-blend-mode:difference;pointer-events:none;z-index:200;transition:width .3s,height .3s,margin .3s}
+#cur.big{width:84px;height:84px;margin:-42px 0 0 -42px}
+@media(hover:none){#cur{display:none}#pv{display:none}}
+@media(max-width:700px){.row{grid-template-columns:1fr}.row span{display:none}.reveal{margin:0 16px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}#pre{display:none}.hero h1 i,.fade{transform:none;opacity:1}}
+</style>
+</head>
+<body class="lock">
+<div id="pre"><span>National University of Sciences and Technology</span><b id="cnt">0</b></div>
+<div id="cur"></div><div id="pv"></div>
+
+<div class="nav"><a class="logo" href="#top">NUST</a><button id="mb" aria-expanded="false" aria-controls="menu">Menu</button></div>
+<div class="menu" id="menu" aria-label="Menu">
+ <a href="#schools"><span>Schools</span></a><a href="#life"><span>Campus life</span></a><a href="#apply"><span>Admissions</span></a><a href="#top"><span>Research</span></a>
+</div>
+
+<main id="top">
+<section class="hero">
+ <div class="meta fade"><p>Islamabad’s university for engineering, science and technology. Teaching since 1991 from the H-12 campus.</p><div class="serif">Built to build.</div></div>
+ <h1 aria-label="NUST"><i style="transition-delay:.15s">N</i><i style="transition-delay:.25s">U</i><i style="transition-delay:.35s">S</i><i style="transition-delay:.45s">T</i></h1>
+</section>
+
+<div class="reveal" id="rv"><div class="photo" role="button" tabindex="0" aria-label="Add a photo of the NUST campus" style="--h:218"><small>Click to add a photo: NUST main campus</small></div></div>
+
+<div class="mq" aria-hidden="true"><div>
+ <span>Engineering<em>✦</em></span><span>Computing<em>✦</em></span><span>Natural sciences<em>✦</em></span><span>Business<em>✦</em></span><span>Architecture<em>✦</em></span>
+ <span>Engineering<em>✦</em></span><span>Computing<em>✦</em></span><span>Natural sciences<em>✦</em></span><span>Business<em>✦</em></span><span>Architecture<em>✦</em></span>
+</div></div>
+
+<section class="state"><p id="st">NUST brings engineers, scientists, designers and managers together on one campus, to teach well, research hard and turn good ideas into things that work.</p></section>
+
+<section class="sch" id="schools"><h2>Nine schools. <span class="serif" style="font-weight:400;color:var(--gold)">One campus.</span></h2><div id="rows"></div></section>
+
+<section class="hs" id="life"><div class="stick"><h2>Life at NUST</h2><div class="track" id="tr">
+ <div class="photo" role="button" tabindex="0" aria-label="Add photo" style="--h:200"><strong>Lecture halls</strong><small>Click to add a photo</small></div>
+ <div class="photo" role="button" tabindex="0" aria-label="Add photo" style="--h:260"><strong>Labs and workshops</strong><small>Click to add a photo</small></div>
+ <div class="photo" role="button" tabindex="0" aria-label="Add photo" style="--h:150"><strong>Sports and hostels</strong><small>Click to add a photo</small></div>
+ <div class="photo" role="button" tabindex="0" aria-label="Add photo" style="--h:30"><strong>Student societies</strong><small>Click to add a photo</small></div>
+ <div class="photo" role="button" tabindex="0" aria-label="Add photo" style="--h:320"><strong>Convocation</strong><small>Click to add a photo</small></div>
+</div></div></section>
+
+<section class="cta" id="apply"><h2>Your turn.</h2><a class="big" href="#" data-mag>Apply for NET</a></section>
+</main>
+<footer><span>NUST, Sector H-12, Islamabad, Pakistan</span><span>Unofficial design concept. Not affiliated with NUST.</span></footer>
+
+<script>
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+/* preloader */
+var cnt=document.getElementById('cnt'),t0=performance.now();
+function go(){document.body.classList.add('ready');document.body.classList.remove('lock')}
+if(rm){go()}else{(function tick(n){var p=Math.min((n-t0)/1700,1);cnt.textContent=Math.round(p*100);p<1?requestAnimationFrame(tick):setTimeout(go,250)})(t0)}
+/* menu */
+var mb=document.getElementById('mb'),mn=document.getElementById('menu');
+mn.querySelectorAll('a span').forEach(function(s,i){s.style.transitionDelay=(.25+i*.08)+'s'});
+function tog(o){mn.classList.toggle('open',o);mb.textContent=o?'Close':'Menu';mb.setAttribute('aria-expanded',o);document.body.classList.toggle('lock',o)}
+mb.onclick=function(){tog(!mn.classList.contains('open'))};
+mn.querySelectorAll('a').forEach(function(a){a.onclick=function(){tog(false)}});
+/* schools */
+var S=[['SEECS','School of Electrical Engineering & Computer Science','Computing, AI, electronics',215],['SMME','School of Mechanical & Manufacturing Engineering','Design, materials, robotics',20],['NICE','NUST Institute of Civil Engineering','Structures, transport, water',160],['NBS','NUST Business School','Management and finance',280],['SNS','School of Natural Sciences','Mathematics, physics, chemistry',190],['S3H','School of Social Sciences & Humanities','Economics, psychology, policy',340],['ASAB','Atta-ur-Rahman School of Applied Biosciences','Biotechnology and health',130],['SCEE','School of Civil & Environmental Engineering','Infrastructure and climate',175],['SADA','School of Art, Design & Architecture','Architecture and design',45]];
+var rows=document.getElementById('rows'),pv=document.getElementById('pv');
+S.forEach(function(s){var a=document.createElement('a');a.className='row';a.href='#';a.dataset.cur='1';
+ a.innerHTML='<b>'+s[0]+'</b><h3>'+s[1].replace(/&/g,'&amp;')+'</h3><span>'+s[2]+'</span>';
+ a.onmouseenter=function(){pv.style.setProperty('--h',s[3]);pv.textContent=s[0];pv.classList.add('on')};
+ a.onmouseleave=function(){pv.classList.remove('on')};rows.appendChild(a)});
+/* statement words */
+var st=document.getElementById('st');st.innerHTML=st.textContent.split(' ').map(function(w){return '<span class="w">'+w+'</span>'}).join(' ');
+var W=st.querySelectorAll('.w');
+/* photo slots */
+document.querySelectorAll('.photo').forEach(function(p){var i=document.createElement('input');i.type='file';i.accept='image/*';i.hidden=true;p.appendChild(i);
+ function o(e){e.preventDefault();i.click()}p.addEventListener('click',function(e){if(e.target!==i)o(e)});
+ p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')o(e)});
+ i.onchange=function(){var f=i.files[0];if(!f)return;var r=new FileReader();r.onload=function(){p.style.backgroundImage='url('+r.result+')';p.classList.add('has')};r.readAsDataURL(f)}});
+/* scroll effects */
+var rv=document.getElementById('rv'),hs=document.getElementById('life'),tr=document.getElementById('tr');
+function sc(){var vh=innerHeight;
+ var r=rv.getBoundingClientRect(),p=Math.min(Math.max((vh-r.top)/(vh*.9),0),1);
+ rv.style.setProperty('--i',(18*(1-p))+'%');rv.firstElementChild.style.setProperty('--s',1.15-.15*p);
+ var sr=st.getBoundingClientRect(),q=(vh*.85-sr.top)/(sr.height+vh*.3);
+ W.forEach(function(w,i){w.classList.toggle('on',q>i/W.length)});
+ var h=hs.getBoundingClientRect(),m=Math.min(Math.max(-h.top/(h.height-vh),0),1);
+ tr.style.transform='translateX('+(-m*Math.max(tr.scrollWidth-innerWidth,0))+'px)'}
+addEventListener('scroll',sc,{passive:true});addEventListener('resize',sc);sc();
+/* cursor, preview, magnetic */
+var cur=document.getElementById('cur'),mx=0,my=0,cx=0,cy=0,px=0,py=0;
+addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY});
+(function loop(){cx+=(mx-cx)*.2;cy+=(my-cy)*.2;px+=(mx-px)*.12;py+=(my-py)*.12;
+ cur.style.transform='translate('+cx+'px,'+cy+'px)';pv.style.transform='translate('+(px+30)+'px,'+(py-190)+'px) scale('+(pv.classList.contains('on')?1:.7)+')';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.photo,[data-cur]').forEach(function(e){e.addEventListener('mouseenter',function(){cur.classList.add('big')});e.addEventListener('mouseleave',function(){cur.classList.remove('big')})});
+document.querySelectorAll('[data-mag]').forEach(function(b){b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+(e.clientX-r.left-r.width/2)*.3+'px,'+(e.clientY-r.top-r.height/2)*.3+'px)'});b.addEventListener('pointerleave',function(){b.style.transform=''})});
+/* local-file photos */
+var IM=["https://www.pakiology.com/wp-content/uploads/2023/01/NUST-Islamabad-980x407.jpg","https://propakistani.pk/wp-content/uploads/2018/03/nust.jpg","https://apcoms.scme.nust.edu.pk/img/nust2.jpg"];
+document.querySelectorAll('.photo').forEach(function(p,i){if(i<3){p.style.backgroundImage='url('+IM[i]+')';p.classList.add('has')}});
+</script>
+</body>
+</html>
